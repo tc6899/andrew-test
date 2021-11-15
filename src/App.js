@@ -1,70 +1,78 @@
 import { useState } from 'react'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
-import Header from './Header'
+import './style.css'
+
+import FullBlueButton from './FullBlueButton'
+import RedButton from './RedButton'
 import Footer from './Footer'
+import Student from './Student'
+import StudentList from './StudentList'
+import Counter from './Counter'
+
+import studentsJson from './studentData.json'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  function updateCount (modifier) {
-    setCount(count => {
-      const updatedCount = count + modifier
-
-      return updatedCount
-    })
+  const [nameInput, setNameInput] = useState('')
+  function changeName (event) {
+    setNameInput(event.target.value)
   }
+  console.log('nameInput test', nameInput)
 
-  function onFocus () {
-    updateCount(1)
+  const [idInput, setIdInput] = useState('')
+  const [students, setStudents] = useState(studentsJson)
+
+  function onSubmit (event) {
+    event.preventDefault()
+    const student = { name: nameInput, id: idInput }
+    console.log('submit test', student)
+
+    const newStudents = [...students, student]
+    setStudents(newStudents)
+    console.log('students test', students)
   }
-
-  function onClick () {
-    updateCount(2)
-  }
-
-  function onChange () {
-    updateCount(-1)
-  }
-
-
-  const andrewHeader = <Header
-    user='Andrew'
-    message='Welcome to Wednesday'
-  />
-
-  const message = 'Welcome to Wednesday'
-
-  const students = [
-    { name: 'Andrew', id: 1 },
-    { name: 'David' },
-    { name: 'David' }
-  ]
-  const headers = students.map((student, index) => {
-    // const props = { "message": message }
-    // const header = Header(props)
-
-    const header = <Header
-      user={student} message={message} key={index}
-    />
-
-    return header
-  })
 
   return (
-    <>
-      {headers}
+    <BrowserRouter>
+      <form onSubmit={onSubmit}>
+        <p>
+          <input placeholder='Student name' type='text' onChange={changeName} />
+        </p>
 
-      <h2>Count: {count}</h2>
+        <p>
+          <input placeholder='Student id' type='number' onChange={event => setIdInput(event.target.value)} />
+        </p>
 
-      <input
-        onFocus={onFocus}
-        onChange={onChange}
-        placeholder='Focus or change'
+        <button>Submit</button>
+      </form>
+
+      <Route
+        path='/student/:studentName/:id?' exact component={Student}
       />
-      <button onClick={onClick}>Click</button>
+
+      {/* if (path === '/red') return <RedButton /> */}
+      <Route path='/red' exact component={RedButton} />
+
+      {/* if (path === '/blue') return <FullBlueButton /> */}
+      <Route
+        path='/blue' exact component={FullBlueButton}
+      />
+
+      <StudentList students={students} />
+
+      <ul>
+        <li>
+           <Link to='/red'>Red!</Link>
+        </li>
+        <li>
+          <Link to='/blue'>Blue</Link>
+        </li>
+      </ul>
+
+      <Counter />
 
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

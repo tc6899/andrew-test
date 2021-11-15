@@ -1,0 +1,32 @@
+.button {
+  background: darkgray;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.button:focus, button:hover {
+  background: grey;
+}
+
+.blue-button{
+  background: blue;
+}
+
+.blue-button:focus, .blue-button:hover {
+  background: darkblue;
+  border: 10px solid green;
+}
+
+.red-button {
+  background: red;
+}
+
+.red-button:focus, .red-button:hover {
+  background: darkred;
+}
+
+.button:active {
+  background: black;
+}
