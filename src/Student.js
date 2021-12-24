@@ -1,7 +1,9 @@
-import Header from './Header'
+import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import students from './studentData.json'
 import { DateTime, Info } from 'luxon'
+
+import studentsContext from './context/students'
+import Header from './Header'
 
 const now = DateTime.now()
 const day = now.weekday
@@ -14,6 +16,8 @@ export default function Student () {
   // path='/student/:studentName' exact component={Student}
   const params = useParams()
   const { studentName, id } = params
+
+  const { students } = useContext(studentsContext)
 
   const student = students.find(potentialStudent => {
     const lowerName = potentialStudent.name.toLowerCase()

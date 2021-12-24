@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 
-function StudentList ({ students }) {
-  const links = students.map((student, index) => {
-    const url = `/student/${student.name}`
-    const idUrl = student.id
-      ? `${url}/${student.id}`
-      : url
+import StudentItem from './StudentItem'
+import studentsContext from './context/students'
 
-    const link = <Link to={idUrl}>{student.name}</Link>
+function StudentList () {
+  const { students } = useContext(studentsContext)
 
-    return <li key={index}>{link}</li>
+  const items = students.map((student, index) => {
+    const item = <StudentItem
+      key={index}
+      student={student}
+    />
+
+    return item
   })
-  console.log('links test:', links)
 
   return (
     <ol>
-      {links}
+      {items}
     </ol>
   );
 }
