@@ -1,28 +1,30 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-export default function Counter () {
-  const [count, setCount] = useState(0)
-  console.log('count test', count)
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  console.log("count test", count);
 
-  function updateCount (modifier) {
-    setCount(count => {
-      const updatedCount = count + modifier
+  function updateCount(modifier) {
+    function modifyCount(currentCount) {
+      const updatedCount = currentCount + modifier;
 
-      return updatedCount
-    })
+      return updatedCount;
+    }
+
+    setCount(modifyCount);
   }
 
-  function onFocus () {
-    updateCount(1)
+  function onFocus() {
+    updateCount(1);
   }
 
-  function onClick () {
-    console.log('click')
-    updateCount(2)
+  function onClick() {
+    console.log("click");
+    updateCount(2);
   }
 
-  function onChange () {
-    updateCount(-1)
+  function onChange() {
+    updateCount(-1);
   }
 
   return (
@@ -32,9 +34,9 @@ export default function Counter () {
       <input
         onFocus={onFocus}
         onChange={onChange}
-        placeholder='Focus or change'
+        placeholder="Focus or change"
       />
-      <button onClick={onClick}>Click</button>
+      <button onClick={onClick}>Click me</button>
     </>
-  )
+  );
 }

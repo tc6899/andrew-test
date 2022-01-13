@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import studentsJson from '../../studentData.json'
+import { useState } from "react";
+import studentsJson from "../../studentData.json";
 
-import studentsContext from "."
+import studentsContext from ".";
 
-export default function StudentsProvider ({ children }) {
-  const [students, setStudents] = useState(studentsJson)
+export default function StudentsProvider({ children }) {
+  const [students, setStudents] = useState(studentsJson);
 
-  const value = { students, setStudents }
-  console.log('value test:', value)
+  const value = { students, setStudents };
 
-  return <studentsContext.Provider value={value}>
-    {children}
-  </studentsContext.Provider>
-} 
+  return (
+    <studentsContext.Provider value={value}>
+      {children}
+    </studentsContext.Provider>
+  );
+}
