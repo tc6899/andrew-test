@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Counter() {
+export default function CounterForm() {
   const [count, setCount] = useState(0);
   console.log("count test", count);
 

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 
 import studentsContext from "./context/students";
 
-export default function CreateStuentForm() {
+export default function CreateStudentForm() {
   const { students, setStudents } = useContext(studentsContext);
 
   const [nameInput, setNameInput] = useState("");

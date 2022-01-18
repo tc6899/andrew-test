@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import StudentList from './StudentList'
-import Counter from './Counter'
+import CounterForm from './CounterForm'
 
 export default function Home () {
 
@@ -18,7 +18,7 @@ export default function Home () {
         </li>
       </ul>
 
-      <Counter />
+      <CounterForm />
     </>
   )
 }
