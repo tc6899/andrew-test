@@ -33,6 +33,7 @@ export default function Student () {
   if (!student) {
     return <div>Student not found</div>
   }
+  
 
   const header = <Header
     user={student} message={message}

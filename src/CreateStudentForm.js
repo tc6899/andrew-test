@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import studentsContext from "./context/students";
 
 export default function CreateStudentForm() {
-  const { students, setStudents } = useContext(studentsContext);
+  const { addStudent } = useContext(studentsContext);
 
   const [nameInput, setNameInput] = useState("");
   function changeName(event) {
@@ -11,13 +11,22 @@ export default function CreateStudentForm() {
   }
 
   const [idInput, setIdInput] = useState("");
+  const student = { name: nameInput, id: idInput };
+  const entries = Object.entries(student);
+  const previews = entries.map((entry) => {
+    const [key, value] = entry;
+    const preview = (
+      <div key={key}>
+        {key}: {value}
+      </div>
+    );
+    return preview;
+  });
+  console.log(entries);
 
   function onSubmit(event) {
     event.preventDefault();
-    const student = { name: nameInput, id: idInput };
-
-    const newStudents = [...students, student];
-    setStudents(newStudents);
+    addStudent(student);
   }
 
   function reset() {
@@ -46,7 +55,7 @@ export default function CreateStudentForm() {
         {/* When the user types in the input, the callback runs.
         The callback passes the value of the input the state. */}
       </p>
-
+      <p>{previews}</p>
       <button>Submit</button>
       <button type="button" onClick={reset}>
         Reset
