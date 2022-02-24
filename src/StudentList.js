@@ -24,11 +24,6 @@ function StudentList () {
 
   // Convert the array of student objects into an array of StudentItem components
   const items = students.map(createItem)
-  // [
-  //   <StudentItem key={0} student={{ name: 'Andrew', id: 1 }} />,
-  //   <StudentItem key={1} student={{ name: 'David', id: 2 }} />
-  // ]
-
   return (
     <ol>
       {items}

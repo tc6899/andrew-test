@@ -11,7 +11,8 @@ export default function CreateStudentForm() {
   }
 
   const [idInput, setIdInput] = useState("");
-  const student = { name: nameInput, id: idInput };
+  const teacher = nameInput.toLowerCase() === 'andrew' ? 'David' : 'Andrew'
+  const student = { name: nameInput, id: idInput, teacher };
   const entries = Object.entries(student);
   const previews = entries.map((entry) => {
     const [key, value] = entry;

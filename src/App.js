@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       {/* if (path === '/red') return <RedButton /> */}
       <Route path="/red" exact component={RedButton} />
-
+    
       {/* if (path === '/blue') return <FullBlueButton /> */}
       <Route path="/blue" exact component={FullBlueButton} />
 
