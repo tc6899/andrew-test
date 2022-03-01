@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       {/* if (path === '/red') return <RedButton /> */}
       <Route path="/red" exact component={RedButton} />
-    
+
       {/* if (path === '/blue') return <FullBlueButton /> */}
       <Route path="/blue" exact component={FullBlueButton} />
 
@@ -26,7 +26,7 @@ function App() {
 
         <Route path="/" exact component={Home} />
       </StudentsProvider>
-
+      <p>Testing 2nd stage in git</p>
       <Footer />
     </BrowserRouter>
   );
